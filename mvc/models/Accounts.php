@@ -1,6 +1,6 @@
 <?php
 
-class Account
+class Accounts
 {
 
         private $db;
@@ -16,6 +16,11 @@ class Account
                 return $this->db->query($sql);
         }
 
+        public function validate($username, $password)
+        {
+                $sql = "SELECT * FROM `accounts` WHERE `username`='$username' AND `password`='$password'";
+                return mysqli_query($this->db, $sql);
+        }
         public function addAccount($data)
         {
                 try {

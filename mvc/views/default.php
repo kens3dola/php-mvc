@@ -6,44 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo isset($this->page_title) ? $this->page_title : "Restaurant"; ?></title>
+    <link href="/php-mvc/public/style/style.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
+    <style>
+        body {
+            color: white;
+            background-color: grey;
+        }
+
+        nav a.nav-link {
+            color: white;
+        }
+
+        .nav-link.active {
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+    </style>
     <div id="header">
-        <nav class="navbar navbar-light bg-light justify-content-end">
-            <ul class="nav nav-pills">
+        <nav class="navbar">
+            <a class="navbar-brand text-white" style="font-size:2rem;float:left" href="#">
+                Lorem
+            </a>
+            <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">HOME</a>
+                    <a class="nav-link active" href="<?php echo DIR ?>home">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">MENU</a>
+                    <a class="nav-link" href="<?php echo DIR ?>home/menu">MENU</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">RESERVATION</a>
+                    <a class="nav-link" href="<?php echo DIR ?>reservation">RESERVATION</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
+                    <a class="nav-link" href="<?php echo DIR ?>home/contact">CONTACT</a>
                 </li>
-                <a class="nav-link" href="#">Cart</a>
-                <a class="nav-link" href="#">Message</a>
+                <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i></a>
+                <a class="nav-link" href="#"><i class="fa fa-comments"></i></a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="navbar-toggler-icon"></span>
-                    </a>
-                    <div class="dropdown-menu" style="left:-200%" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                    <?php
+                    if (!isset($_SESSION['user_id'])) {
+                        echo '<a class="nav-link" href="/php-mvc/account/login">Login</i></a>';
+                    } else {
+                    ?>
+                        <a class="nav-link navbar-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle"></i>
+                        </a>
+                        <div class="dropdown-menu" style="left:-200%" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="profile">Profile</a>
+                            <a class="dropdown-item" href="account/password">Password</a>
+                            <a class="dropdown-item" href="<?php echo DIR ?>account/logout">Logout</a>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </li>
             </ul>
         </nav>
     </div>
     <div id="content">
+
         <?php
         if (file_exists('./mvc/views/' . $this->view_file . '.php')) {
-            require_once "./mvc/views/" . $this->view_file . ".php";
+            require "./mvc/views/" . $this->view_file . ".php";
         }
         ?>
     </div>

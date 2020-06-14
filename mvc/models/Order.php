@@ -10,10 +10,18 @@ class Order
                 $this->db = $db;
         }
 
-        public function getOrder()
+        public function getOrder($account_id)
         {
-                $sql = 'select * form orders';
-                return $this->db->query($sql);
+                $sql_select = 'select * form orders where $account_id = :account_id and date=NULL';
+                $stmt = $this->db->prepare($sql_select);
+                $stmt->bindParam(':account_id', $account_id);
+                $r = $this->db->query($sql_select);
+                if ($r->num_rows == 0) {
+                        $this->addOrder(['date' => 'NULL', 'type' => 'order', 'amount' => '0', 'account_id' => $account_id]);
+                        return $this->db->qurey($sql_select);
+                } else {
+                        return $r;
+                }
         }
 
         public function addOrder($data)
