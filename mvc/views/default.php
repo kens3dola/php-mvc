@@ -45,8 +45,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo DIR ?>home/contact">CONTACT</a>
                 </li>
-                <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i></a>
-                <a class="nav-link" href="#"><i class="fa fa-comments"></i></a>
+                <a class="nav-link" href="<?php echo DIR ?>order"><i class="fa fa-shopping-cart"></i></a>
+                <a class="nav-link" href="<?php echo DIR ?>"><i class="fa fa-comments"></i></a>
                 <li class="nav-item dropdown">
                     <?php
                     if (!isset($_SESSION['user_id'])) {

@@ -13,9 +13,7 @@ class Controller
 
     public function model($model)
     {
-        if ($model != "Account") {
-            require_once "./mvc/models/" . $model . ".php";
-        }
+        require_once "./mvc/models/" . $model . ".php";
         return new $model($this->dbc);
     }
 
