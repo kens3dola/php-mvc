@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <?php
+    include_once './mvc/views/common/alert.php'; ?>
     <style>
         body {
             color: white;
@@ -49,7 +51,7 @@
                 <a class="nav-link" href="<?php echo DIR ?>"><i class="fa fa-comments"></i></a>
                 <li class="nav-item dropdown">
                     <?php
-                    if (!isset($_SESSION['user_id'])) {
+                    if (!isset($_SESSION['account_id'])) {
                         echo '<a class="nav-link" href="/php-mvc/account/login">Login</i></a>';
                     } else {
                     ?>

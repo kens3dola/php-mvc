@@ -1,4 +1,17 @@
-// Login
+/* Alert */
+#alrt {
+  z-index: 100;
+  position: fixed;
+  text-align: center;
+  width: 30%;
+  top: 95%;
+  left: 35%;
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+  line-height: 25px;
+}
+/* Login*/
 .login_form {
   padding-top: 10%;
 }
@@ -15,7 +28,7 @@
   border-width: 0 0 1px 0;
   border-color: black;
 }
-// Cart
+/*Cart*/
 .cart {
   overflow: auto;
 }
@@ -28,6 +41,7 @@
 }
 .cart_item img {
   width: 20%;
+  border: 0.5px solid black;
 }
 .cart_item span {
   display: flex;
@@ -37,14 +51,16 @@
 .total {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 5%;
 }
 .order_submit_btn {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 30%;
   height: 10%;
   float: right;
   background-color: red;
   color: white;
   border-radius: 30px;
-  line-height: 300%;
 }

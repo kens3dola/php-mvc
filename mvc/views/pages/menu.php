@@ -23,13 +23,6 @@ require_once './mvc/views/common/banner-image.php';
                         </div>
                 <?php
                 }
-                if (isset($_SESSION['message'])) {
                 ?>
-                        <script>
-                                alert('<?php echo $_SESSION['message'] ?>')
-                        </script>
-                <?php
-                        unset($_SESSION['message']);
-                } ?>
         </div>
 </div>

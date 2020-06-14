@@ -12,7 +12,8 @@ class OrderLine
 
         public function getOrderLines($order_id)
         {
-                $sql = "select * from order_lines inner join items on order_lines.item_id=items.id  where order_id=$order_id";
+                $sql = "select l.id, l.item_id, l.item_quantity, l.amount, l.order_id, i.name, i.description, i.image from order_lines as l
+                 inner join items as i on l.item_id=i.id where order_id=$order_id";
                 return mysqli_query($this->db, $sql);
         }
 
@@ -30,5 +31,10 @@ class OrderLine
                         $sql_update = "UPDATE `order_lines` set `item_quantity`=$quantity where  `id`={$row['id']}";
                         mysqli_query($this->db, $sql_update);
                 }
+        }
+        public function delete($id)
+        {
+                $sql = "delete from order_lines where id=$id";
+                mysqli_query($this->db, $sql);
         }
 }

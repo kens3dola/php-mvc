@@ -13,13 +13,13 @@ class App
         switch ($arr[0]) {
             case 'account':
                 if (strcmp($arr[1], 'login') == 0) {
-                    if (isset($_SESSION['user_id']) || !empty($_SESSION['user_id'])) {
+                    if (isset($_SESSION['account_id']) || !empty($_SESSION['account_id'])) {
                         header("Location: /php-mvc/home");
                     }
                 }
                 break;
             case 'admin':
-                if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+                if (!isset($_SESSION['account_id']) || empty($_SESSION['account_id'])) {
                     $arr[0] = 'home';
                 } else {
                     if (strcmp($_SESSION['role'], 'admin') != 0) {
@@ -31,7 +31,7 @@ class App
             case 'home':
                 break;
             default:
-                if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+                if (!isset($_SESSION['account_id']) || empty($_SESSION['account_id'])) {
                     header("Location: /php-mvc/account/login");
                 }
                 break;

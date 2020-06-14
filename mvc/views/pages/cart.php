@@ -12,13 +12,14 @@ include './mvc/views/common/background-image.php';
                         <span><?php echo $row['name'] ?></span>
                         <span><?php echo $row['amount'] ?>$</span>
                         <span><?php echo $row['item_quantity'] ?></span>
-                        <span><a href="/php-mvc/order/deleteitem">Delete</a></span>
+                        <span><a href="/php-mvc/order/deleteitem/<?php echo $row['id'] ?>">Delete</a></span>
                 </div>
+                <hr>
         <?php
         }
         ?>
         <div class="total">
                 <span>Total: <?php echo $total ?>$</span>
         </div>
-        <a href="/php-mvc/order/submit" class="order_submit_btn">Order now</a>
+        <a href="/php-mvc/order/submit" class="order_submit_btn">Proceed to checkout</a>
 </div>

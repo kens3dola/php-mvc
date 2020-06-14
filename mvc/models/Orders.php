@@ -38,4 +38,10 @@ class Orders
                 $sql = "update orders set amount=$price where id=$id";
                 return mysqli_query($this->db, $sql);
         }
+
+        public function submitOrder($date, $account_id)
+        {
+                $sql = "update orders set date='$date' where account_id=$account_id and date is null";
+                return mysqli_query($this->db, $sql);
+        }
 }
