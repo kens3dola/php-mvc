@@ -42,13 +42,13 @@
                     <a class="nav-link" href="<?php echo DIR ?>home/menu">MENU</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo DIR ?>reservation">RESERVATION</a>
+                    <a class="nav-link" href="<?php echo DIR ?>order/reservation">RESERVATION</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo DIR ?>home/contact">CONTACT</a>
                 </li>
                 <a class="nav-link" href="<?php echo DIR ?>order"><i class="fa fa-shopping-cart"></i></a>
-                <a class="nav-link" href="<?php echo DIR ?>"><i class="fa fa-comments"></i></a>
+                <a class="nav-link" href="<?php echo DIR ?>message"><i class="fa fa-comments"></i></a>
                 <li class="nav-item dropdown">
                     <?php
                     if (!isset($_SESSION['account_id'])) {
@@ -59,7 +59,7 @@
                             <i class="fa fa-user-circle"></i>
                         </a>
                         <div class="dropdown-menu" style="left:-200%" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="profile">Profile</a>
+                            <a class="dropdown-item" href="<?php echo DIR ?>/account/profile">Profile</a>
                             <a class="dropdown-item" href="account/password">Password</a>
                             <a class="dropdown-item" href="<?php echo DIR ?>account/logout">Logout</a>
                         </div>

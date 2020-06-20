@@ -32,6 +32,8 @@ class App
                 break;
             default:
                 if (!isset($_SESSION['account_id']) || empty($_SESSION['account_id'])) {
+                    unset($arr[0]);
+                    if (isset($arr[1])) unset($arr[1]);
                     header("Location: /php-mvc/account/login");
                 }
                 break;

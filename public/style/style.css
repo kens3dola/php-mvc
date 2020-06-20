@@ -64,3 +64,11 @@
   color: white;
   border-radius: 30px;
 }
+
+/* Change profile */
+.changeprofile {
+  margin: auto;
+}
+.profile_form {
+  width: 50%;
+}

@@ -16,4 +16,9 @@ class Home extends Controller
         $this->view("default", "pages/menu", $list_items);
         $this->view->render();
     }
+    function contact()
+    {
+        $this->view("default", "pages/contact");
+        $this->view->render();
+    }
 }

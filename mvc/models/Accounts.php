@@ -10,6 +10,12 @@ class Accounts
                 $this->db = $db;
         }
 
+        public function getAccount($id)
+        {
+                $sql = "select * from accounts where id = $id";
+                return mysqli_query($this->db, $sql);
+        }
+
         public function getAccounts()
         {
                 $sql = 'select * form accounts';

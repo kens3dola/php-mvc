@@ -10,12 +10,18 @@ class Customer
                 $this->db = $db;
         }
 
-        public function getCustomers()
+        public function getCustomer($id)
         {
-                $sql = 'select * form customers';
-                return $this->db->query($sql);
+                $sql = "select * from customers where account_id = $id";
+                return mysqli_query($this->db, $sql);
         }
 
+        public function updateProfile($account_id, $name, $phone, $address)
+        {
+                $sql = "update customers set name='$name', phone='$phone', address='$address' where account_id=$account_id";
+                echo $sql;
+                return mysqli_query($this->db, $sql);
+        }
         public function addCustomer($data)
         {
                 try {

@@ -12,8 +12,8 @@ class Table
 
         public function getTables()
         {
-                $sql = 'select * form tables';
-                return $this->db->query($sql);
+                $sql = "select * from tables";
+                return mysqli_query($this->db, $sql);
         }
 
         public function addTable($data)

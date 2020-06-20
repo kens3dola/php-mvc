@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 class TableTrack
 {
 
@@ -16,19 +18,21 @@ class TableTrack
                 return $this->db->query($sql);
         }
 
-        public function addTableTrack($data)
+        public function insert($table_id, $start, $end, $account_id)
         {
-                try {
-                        $sql = "INSERT INTO `tables_track` (`table_id`,`order_id`,`start`,`end`) VALUES
-                        (:table_id,:order_id,:start,:end)";
-                        $stmt = $this->db->prepare($sql);
-                        $stmt->bindParam(':table_id', $data['table_id']);
-                        $stmt->bindParam(':order_id', $data['order_id']);
-                        $stmt->bindParam(':start', $data['start']);
-                        $stmt->bindParam(':end', $data['end']);
-                        $stmt->execute();
-                } catch (PDOException $e) {
-                        echo $e->getMessage();
-                }
+                $s = date_format($start, 'Y/m/d H:i:s');
+                $e = date_format($end, 'Y/m/d H:i:s');
+                $sql = "INSERT INTO `tables_track` (`table_id`,`start`,`end`,`account_id`) VALUES
+                        ($table_id,'$s','$e',$account_id)";
+                echo $sql;
+                return mysqli_query($this->db, $sql);
+        }
+
+        public function getUnavailable($start, $end)
+        {
+                $s = date_format($start, 'Y/m/d H:i:s');
+                $e = date_format($end, 'Y/m/d H:i:s');
+                $sql = "select * from tables_track where start='$s' or end='$e' or (start>'$s' and start<'$e') or (end>'$s' and end<'$e')";
+                return mysqli_query($this->db, $sql);
         }
 }
