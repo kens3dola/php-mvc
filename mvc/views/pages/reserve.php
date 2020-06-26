@@ -12,7 +12,7 @@
 <div class="container-fluid" style="position:absolute; top:30%; height:70%; background-color: white; color:black">
 
         <h1 class="text-center">Reservation form</h1>
-        <form class="profile_form" action="/php-mvc/order/reservation" method="POST">
+        <form class="profile_form" style="margin: auto" action="/php-mvc/order/reservation" method="POST">
 
                 <div class="form-group">
                         <label for="">*Date:</label>

@@ -18,6 +18,7 @@
         body {
             color: white;
             background-color: grey;
+            overflow-x: hidden;
         }
 
         nav a.nav-link {
@@ -59,8 +60,17 @@
                             <i class="fa fa-user-circle"></i>
                         </a>
                         <div class="dropdown-menu" style="left:-200%" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo DIR ?>/account/profile">Profile</a>
-                            <a class="dropdown-item" href="account/password">Password</a>
+                            <?php
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == "customer") {
+                                echo "<a class='dropdown-item' href='/php-mvc/account/profile'>Profile</a>";
+                            }
+                            ?>
+                            <a class="dropdown-item" href="<?php echo DIR ?>account/password">Password</a>
+                            <?php
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                                echo "<a class='dropdown-item' href='/php-mvc/admin/index'>Admin site</a>";
+                            }
+                            ?>
                             <a class="dropdown-item" href="<?php echo DIR ?>account/logout">Logout</a>
                         </div>
                     <?php

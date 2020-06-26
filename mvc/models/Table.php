@@ -16,17 +16,15 @@ class Table
                 return mysqli_query($this->db, $sql);
         }
 
-        public function addTable($data)
+        public function insert()
         {
-                $sql = 'insert into tables values(:';
-                try {
-                        $sql = "INSERT INTO `tables` (`chairs_count`) VALUES
-                        (:chairs_count)";
-                        $stmt = $this->db->prepare($sql);
-                        $stmt->bindParam(':chairs_count', $data['chairs_count']);
-                        $stmt->execute();
-                } catch (PDOException $e) {
-                        echo $e->getMessage();
-                }
+                $sql = 'insert into tables(chairs_count) values(6)';
+                return mysqli_query($this->db, $sql);
+        }
+
+        public function delete($id)
+        {
+                $sql = "delete from tables where id=$id";
+                return mysqli_query($this->db, $sql);
         }
 }

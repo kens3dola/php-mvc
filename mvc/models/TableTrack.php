@@ -35,4 +35,10 @@ class TableTrack
                 $sql = "select * from tables_track where start='$s' or end='$e' or (start>'$s' and start<'$e') or (end>'$s' and end<'$e')";
                 return mysqli_query($this->db, $sql);
         }
+
+        public function getReservations()
+        {
+                $sql = "select * from tables_track";
+                return mysqli_query($this->db, $sql);
+        }
 }

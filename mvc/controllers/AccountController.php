@@ -45,6 +45,21 @@ class Account extends Controller
 
         function password()
         {
+                $account_id = $_SESSION['account_id'];
+                $tblAccount = $this->model("Accounts");
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        if (empty($_POST['pass'])) {
+                                $error[] = "invalid name";
+                        } else {
+                                $newPass = trim($_POST['pass']);
+                        }
+                        $tblAccount->changePassword($account_id, $newPass);
+                        $_SESSION['message'] = "updated";
+                        header("Location: /php-mvc/home");
+                } else {
+                        $this->view("default", "pages/password");
+                        $this->view->render();
+                }
         }
 
         function login()

@@ -44,4 +44,10 @@ class Orders
                 $sql = "update orders set date='$date' where account_id=$account_id and date is null";
                 return mysqli_query($this->db, $sql);
         }
+
+        public function getHistoryOrders()
+        {
+                $sql = "select * from orders as o inner join order_lines as ol on o.id = ol.order_id inner join items as i on ol.item_id = i.id";
+                return mysqli_query($this->db, $sql);
+        }
 }

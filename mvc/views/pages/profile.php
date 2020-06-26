@@ -2,9 +2,9 @@
 include_once "./mvc/views/common/banner-image.php";
 ?>
 
-<div class="container p-5 changeprofile" style="position:absolute;top:30%">
+<div class="container-fluid p-5 changeprofile" style="position:absolute;top:30%">
         <h1 class="text-center">Profile</h1>
-        <form class="profile_form" action="/php-mvc/account/profile" method="POST">
+        <form class="profile_form" style="margin:auto" action="/php-mvc/account/profile" method="POST">
 
                 <div class="form-group">
                         <label for="">Name:</label>

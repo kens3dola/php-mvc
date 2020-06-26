@@ -16,18 +16,25 @@ class Item
                 return mysqli_query($this->db, $sql);
         }
 
-        public function addItem($data)
+        public function getItem($id)
         {
-                try {
-                        $sql = "INSERT INTO `items` (`name`,`description`,`price`) VALUES
-                        (:name, :description, :price)";
-                        $stmt = $this->db->prepare($sql);
-                        $stmt->bindParam(':name', $data['name']);
-                        $stmt->bindParam(':description', $data['description']);
-                        $stmt->bindParam(':price', $data['price']);
-                        $stmt->execute();
-                } catch (PDOException $e) {
-                        echo $e->getMessage();
-                }
+                $sql = "select * from items where id=$id";
+                return mysqli_query($this->db, $sql);
+        }
+
+        public function delete($id)
+        {
+                $sql = "delete from items where id=$id";
+                return mysqli_query($this->db, $sql);
+        }
+        public function update($id, $name, $description, $price, $image)
+        {
+                $sql = "update items set name='$name', description='$description', price=$price, image='$image' where id=$id";
+                return mysqli_query($this->db, $sql);
+        }
+        public function insert($id, $name, $description, $price, $image)
+        {
+                $sql = "insert into items(name, description, price, image) value ('$name', '$description', $price, '$image')";
+                return mysqli_query($this->db, $sql);
         }
 }
